@@ -1,0 +1,11 @@
+Ensemble CNN vs. Single CNN — Fashion-MNIST Results
+====================================================
+
+Train records: 40 | Validation records: 10 | Test records: 50
+Ensemble size: 5 models | Epochs per model: 3
+
+Ensemble  — Validation accuracy: 0.4000 | Test accuracy: 0.3400
+Single    — Validation accuracy: 0.5000 | Test accuracy: 0.3800
+
+Validation accuracy difference (ensemble - single): -0.1000
+Test accuracy difference (ensemble - single): -0.0400
