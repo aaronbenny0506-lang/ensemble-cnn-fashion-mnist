@@ -6,7 +6,7 @@ single CNN trained on the same data.
 
 ## Dataset
 
-**Fashion-MNIST** — 28x28 grayscale images of clothing items across 10
+**Fashion-MNIST*, 28x28 grayscale images of clothing items across 10
 classes (T-shirt/top, Trouser, Pullover, Dress, Coat, Sandal, Shirt,
 Sneaker, Bag, Ankle boot).
 
@@ -28,7 +28,7 @@ Sneaker, Bag, Ankle boot).
 > the first 50 records anyway, the `.gz` files in this repo are pre-trimmed
 > to contain just those 50 train / 50 test records (each under 25KB) rather
 > than the full 60,000 / 10,000. `data_loader.py` reads them exactly the
-> same way either way — the trimming only removes images/labels the script
+> same way either way, the trimming only removes images/labels the script
 > would never touch.
 
 ## Data Preprocessing
@@ -45,7 +45,7 @@ sets are used (not the full 60,000 / 10,000):
 5. The 50 test records are kept aside as a held-out test set.
 
 Because only 40 images cover 10 classes (~4 images per class on average),
-this is an intentionally tiny, fast-to-run dataset — expect noisy,
+this is an intentionally tiny, fast-to-run dataset, expect noisy,
 lower-than-usual accuracy compared to training on the full 60k images.
 
 ## Model Architecture
@@ -68,7 +68,7 @@ crossentropy** loss.
 - **5 CNN models** are trained, each with the architecture above.
 - Each model is trained on its own **bootstrap sample**: the 40 training
   images resampled with replacement to another set of 40 (some images
-  repeated, some left out) — a classic bagging approach.
+  repeated, some left out), a classic bagging approach.
 - Each model trains for **3 epochs**.
 - Predictions are made by running all 5 models on the validation/test sets
   and **averaging their predicted class probabilities**; the final
@@ -92,7 +92,7 @@ Full numeric results (including config) are in `results_summary.json` and
 ### Comparison
 
 With only 40 training images across 10 classes, results are noisy and
-sample-size-dependent — this run shows the single model outperforming the
+sample-size-dependent, this run shows the single model outperforming the
 ensemble on both validation (+0.10) and test (+0.04).
 This isn't a stable trend; it reflects how volatile accuracy is at this
 data scale, where each class has only a handful of examples and a single
@@ -100,21 +100,21 @@ image or two flipping right/wrong changes accuracy by several percentage
 points. Ensembling with bagging generally helps stabilize variance and
 reduce overfitting to any one training draw, but its benefit becomes
 visible only with enough data/iterations for that variance-reduction
-effect to average out — 50 total records isn't enough to reliably show it.
+effect to average out, 50 total records isn't enough to reliably show it.
 At full scale (60,000 training images), an ensemble of CNNs like this would
 be expected to outperform a single CNN more consistently, at the cost of
 ~5x the training time and inference compute.
 
 ## Files in This Repo
 
-- `ensemble_cnn.py` — main script (run this)
-- `data_loader.py` — loads Fashion-MNIST from local IDX files
+- `ensemble_cnn.py` : main script (run this)
+- `data_loader.py` : loads Fashion-MNIST from local IDX files
 - `requirements.txt`
 - `README.md`
 - `train-images-idx3-ubyte.gz`, `train-labels-idx1-ubyte.gz`,
-  `t10k-images-idx3-ubyte.gz`, `t10k-labels-idx1-ubyte.gz` — Fashion-MNIST
+  `t10k-images-idx3-ubyte.gz`, `t10k-labels-idx1-ubyte.gz` : Fashion-MNIST
   data files (gzip, IDX format)
-- `accuracy_comparison.png` — ensemble vs. single model bar chart
+- `accuracy_comparison.png` : ensemble vs. single model bar chart
 - `confusion_matrix_ensemble_test.png`
 - `confusion_matrix_single_test.png`
 - `sample_predictions_ensemble.png`
@@ -133,5 +133,5 @@ python ensemble_cnn.py
 
 `data_loader.py` reads the four `.gz` files, and `ensemble_cnn.py` writes
 all output charts and result files, from/to the same directory the scripts
-live in — so just keep everything in one folder as uploaded, with no
+live in, so just keep everything in one folder as uploaded, with no
 subfolders needed.
