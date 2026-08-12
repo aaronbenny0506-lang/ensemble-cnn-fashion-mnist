@@ -1,0 +1,19 @@
+{
+  "ensemble": {
+    "val_accuracy": 0.4,
+    "test_accuracy": 0.36
+  },
+  "single": {
+    "val_accuracy": 0.5,
+    "test_accuracy": 0.46
+  },
+  "config": {
+    "n_records": 50,
+    "n_ensemble_models": 5,
+    "epochs": 3,
+    "batch_size": 8,
+    "train_size": 40,
+    "val_size": 10,
+    "test_size": 50
+  }
+}
