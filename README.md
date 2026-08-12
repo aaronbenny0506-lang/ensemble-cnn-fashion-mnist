@@ -1,12 +1,12 @@
 # Ensemble CNN for Fashion-MNIST Classification
 
 An ensemble of 5 Convolutional Neural Networks (CNNs), each trained on a
-bootstrap resample of the Fashion-MNIST training data, compared against a
+bootstrap resample of the Fashion-MNIST training data compared against a
 single CNN trained on the same data.
 
 ## Dataset
 
-**Fashion-MNIST** — 28x28 grayscale images of clothing items across 10
+**Fashion-MNIST** , 28x28 grayscale images of clothing items across 10
 classes (T-shirt/top, Trouser, Pullover, Dress, Coat, Sandal, Shirt,
 Sneaker, Bag, Ankle boot).
 
